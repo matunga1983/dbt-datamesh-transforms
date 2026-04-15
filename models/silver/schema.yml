@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: orders_cleaned
+    description: "Cleaned orders — no cancelled, with year/month derived"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['completed', 'pending', 'shipped', 'refunded']

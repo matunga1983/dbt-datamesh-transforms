@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: revenue_by_country
+    description: "Revenue KPIs aggregated by country and month"
+    columns:
+      - name: country
+        tests:
+          - not_null
+      - name: total_revenue
+        tests:
+          - not_null
+      - name: total_orders
+        tests:
+          - not_null

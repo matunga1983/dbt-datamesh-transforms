@@ -1,0 +1,19 @@
+datamesh:
+  target: "{{ env_var('DBT_TARGET', 'dev') }}"
+  outputs:
+    dev:
+      type: spark
+      method: thrift
+      host: "{{ env_var('THRIFT_HOST', 'spark-thrift') }}"
+      port: 10001
+      schema: "{{ env_var('DBT_SCHEMA', 'silver') }}"
+      connect_retries: 3
+      connect_timeout: 30
+    prod:
+      type: spark
+      method: thrift
+      host: "{{ env_var('THRIFT_HOST', 'spark-thrift-svc') }}"
+      port: 10001
+      schema: "{{ env_var('DBT_SCHEMA', 'silver') }}"
+      connect_retries: 3
+      connect_timeout: 30

@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Staged orders from bronze — light cleanup"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: total_amount
+        tests:
+          - not_null

@@ -1,0 +1,28 @@
+name: datamesh_transforms
+version: '1.0.0'
+config-version: 2
+
+profile: datamesh
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  datamesh_transforms:
+    # All models → Iceberg tables
+    +file_format: iceberg
+
+    staging:
+      # Staging models write to the silver namespace
+      +schema: silver
+
+    silver:
+      # Silver models also write to silver namespace
+      +schema: silver
+
+    gold:
+      # Gold models write to gold namespace
+      +schema: gold
